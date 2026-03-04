@@ -16,6 +16,12 @@ class Program
         job2.startYear = 2022;
         job2.endYear = 2024;
 
-        
+        Resume myResume = new Resume();
+        myResume.name = "Allison Rose";
+
+        myResume.jobs.Add(job1);
+        myResume.jobs.Add(job2);
+
+        myResume.Display();
     }
 }
