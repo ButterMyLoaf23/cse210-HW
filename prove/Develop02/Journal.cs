@@ -1,6 +1,4 @@
 using System;
-using System.IO.Enumeration;
-using System.Xml.Linq;
 
 public class Journal
 {
@@ -9,6 +7,17 @@ public class Journal
     public void AddEntry(Entry entry)
     {
         _entries.Add(entry);
+        Console.WriteLine();
+    }
+
+    public void DisplayAll()
+    {
+        foreach (Entry entry in _entries)
+        {
+            Console.WriteLine();
+            entry.Display();
+            Console.WriteLine();
+        }
     }
 
     public void SaveToFile(string filename)
@@ -19,8 +28,31 @@ public class Journal
         {
             lines.Add($"{entry._date} | {entry._category} | {entry._prompt} | {entry._response}");    
         }
-        //
+
         File.WriteAllLines(filename, lines);
         Console.WriteLine("Your Journal Entry Was Saved");
+        Console.WriteLine();
+    }
+
+    public void LoadFromFile(string filename)
+    {
+        string[] lines = File.ReadAllLines(filename);
+        _entries.Clear();
+        foreach (string line in lines)
+        {
+            string[] parts = line.Split("|");
+            if (parts.Length == 4)
+            {
+                string date = parts[0];
+                string category = parts[1];
+                string prompt = parts[2];
+                string response = parts[3];
+                Entry entry = new Entry(date, prompt, response, category);
+                _entries.Add(entry);
+            }
+
+            Console.WriteLine("Loaded journal entry");
+            Console.WriteLine();
+        }
     }
 }
