@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 
+// I used lambda expressions here because I thought it worked better in this case, I know it's not something taught in class but I'm using outside resources such as w3schools to learn more about C#
 class Scripture
 {
     private Reference _reference;
