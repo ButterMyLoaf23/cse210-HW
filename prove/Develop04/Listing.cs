@@ -9,12 +9,13 @@ public class ListingActivity : Activity
         "Who are some of your personal heroes?"
     };
 
-    public ListingActivity()
-        : base(
+    public ListingActivity() : base(
             "Listing",
             "This activity helps you list positive things in your life."
           )
-    { }
+    {
+        
+    }
 
     protected override void RunActivity()
     {
