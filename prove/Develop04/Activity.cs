@@ -5,7 +5,7 @@ public abstract class Activity
 {
     private string _name;
     private string _description;
-    private int _duration;
+    protected int _duration;
 
     public Activity (string name, string description)
     {
@@ -28,7 +28,7 @@ public abstract class Activity
         End();
     }
 
-    private void ShowSpinner(int seconds)
+    protected void ShowSpinner(int seconds)
     {
         string[] spinner = { "|", "/", "-", "\\"};
         DateTime endTime = DateTime.Now.AddSeconds(seconds);

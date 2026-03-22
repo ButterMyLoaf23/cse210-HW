@@ -24,24 +24,24 @@ public class ReflectionActivity : Activity
         
     }
 
-        protected override void RunActivity()
+    protected override void RunActivity()
+    {
+        Random random = new Random();
+        string prompt = _prompts[random.Next(_prompts.Count)];
+    Console.WriteLine($"{prompt}");
+    ShowSpinner(5);
+
+    DateTime endTime = DateTime.Now.AddSeconds(_duration);
+
+    foreach (string question in _questions)
+    {
+        if (DateTime.Now >= endTime)
         {
-            Random random = new Random();
-            string prompt = _prompts[random.Next(_prompts.Count)];
-        Console.WriteLine($"{prompt}");
-        ShowSpinner(5);
-
-        DateTime endTime = DateTime.Now.AddSeconds(_duration);
-
-        foreach (string question in _questions)
-        {
-            if (DateTime.Now >= endTime)
-            {
-                break;
-            }
-
-            Console.WriteLine($"{question}");
-            ShowSpinner(5);
+            break;
         }
+
+        Console.WriteLine($"{question}");
+        ShowSpinner(5);
     }
+}
 }
